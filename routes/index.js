@@ -3,7 +3,34 @@ var passport = require('passport');
 var router = express.Router();
 
 var User = require('../models/user');
-
+/* GET about page */
+router.get('/about', function (req, res, next) {
+    res.render('about', {
+        title: 'About',
+        displayName: req.user ? req.user.displayName : ''
+    });
+});
+/* GET projects page */
+    router.get('/projects', function (req, res, next) {
+        res.render('projects', {
+            title: 'Projects',
+            displayName: req.user ? req.user.displayName : ''
+        });
+    });
+/* GET services page */
+    router.get('/services', function (req, res, next) {
+        res.render('Services', {
+            title: 'Services',
+            displayName: req.user ? req.user.displayName : ''
+        });
+    });
+/* GET contact page */
+    router.get('/contact', function (req, res, next) {
+        res.render('contact', {
+            title: 'contact',
+            displayName: req.user ? req.user.displayName : ''
+        });
+    });
 /* Render home page. */
 router.get('/', function (req, res, next) {
     res.render('index', {

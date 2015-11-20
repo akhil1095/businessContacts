@@ -4,6 +4,12 @@ var router = express.Router();
 
 var User = require('../models/user');
 
+router.get('/contacts/index', function (req, res, next) {
+    res.render('index', {
+        title: 'Contact   ',
+        displayName: req.user ? req.user.displayName : ''
+    });
+});
 /* Utility functin to check if user is authenticatd */
 function requireAuth(req, res, next){
 
@@ -117,103 +123,4 @@ router.get('/delete/:id', requireAuth, function (req, res, next) {
 });
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
-var Contact = require('../models/user');
-
-/* Render Users main page. */
-router.get('/', requireAuth, function (req, res, next) {
-    Contact.find(function (err, contacts) {
-        if (err) {
-            console.log(err);
-            res.end(err);
-        }
-        else {
-            res.render('users/index', {
-                title: 'Contacts',
-                contacts:contacts,
-            });
-        }
-    });
-});
-
-/* Render the Add Users Page */
-router.get('/addcontact', requireAuth, function (req, res, next) {
-    res.render('users/addcontact', {
-        title: 'Contacts',
-        displayName: req.contact ? req.contact.displayName : ''
-    });
-});
-
-/* process the submission of a new user */
-router.post('/addcontact', requireAuth, function (req, res, next) {
-    var contact = new Contact(req.body);
-    Contact.create({
-        email: req.body.email,
-        displayName: req.body.displayName,
-        provider: 'local'
-    }, function (err, Contact) {
-        if (err) {
-            console.log(err);
-            res.end(err);
-        }
-        else {
-            res.redirect('/users');
-        }
-    });
-});
-
-/* Render the User Edit Page */
-router.get('/:id', requireAuth, function (req, res, next) {
-    // create an id variable
-    var id = req.params.id;
-    // use mongoose and our model to find the right user
-    Contact.findById(id, function (err, contact) {
-        if (err) {
-            console.log(err);
-            res.end(err);
-        }
-        else {
-            //show the edit view
-            res.render('users/editcontactt', {
-                title: 'Contacts',
-                contact: contact,
-                displayName: req.contact ? req.contact.displayName : ''
-            });
-        }
-    });
-});
-
-/* process the edit form submission */
-router.post('/:id', requireAuth, function (req, res, next) {
-    var id = req.params.id;
-    var contact = new Contact(req.body);
-    contact._id = id;
-    contact.updated = Date.now();
-
-    // use mongoose to do the update
-    Contact.update({ _id: id }, contact, function (err) {
-        if (err) {
-            console.log(err);
-            res.end(err);
-        }
-        else {
-            res.redirect('/users');
-        }
-    });
-});
-
-/* run delete on the selected user */
-router.get('/delete/:id', requireAuth, function (req, res, next) {
-    var id = req.params.id;
-    Contact.remove({ _id: id }, function (err) {
-        if (err) {
-            console.log(err);
-            res.end(err);
-        }
-        else {
-            res.redirect('/users');
-        }
-    });
-});
-
 module.exports = router;
-

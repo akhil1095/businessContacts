@@ -8,7 +8,9 @@
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  
+
+  <!-- Custom CSS -->
+  <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 
 <body>
@@ -23,19 +25,16 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
         </button>
       </div> <!-- navbar-header -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
 
-
           <li><a href="/">Home</a></li>
           <li><a href="/about">About</a></li>
           <li><a href="/services">Services</a></li>
           <li><a href="/projects">projects</a></li>
+          <li><a href="/contactme">Contactme</a></li>
           <li role="separator" class="divider"></li>
           <% if (displayName) { %>
             <% if(title == "Users" ) { %>
@@ -47,11 +46,15 @@
             <li class="navbar-text">Hello,
               <%= displayName %>
             </li>
+          <li><a href="/contacts">Contacts</a></li>
             <li><a href="/logout">Logout</a></li>
-            <% } else { %>
+
+
+          <% } else { %>
               <% if(title == "Register" ) { %>
             <li class="active">
             <% } else { %>
+
             <li>
             <% } %>
                 <a href="/register">Register</a></li>

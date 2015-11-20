@@ -33,20 +33,6 @@ UserSchema.methods.validPassword = function (password) {
 module.exports = mongoose.model('User', UserSchema);
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
-var ContSchema = new Schema({
-		name: String,
-		email: String,
-		displayName: String,
-		salt: String,
-		provider: String,
-		providerId: String,
-		providerData: {},
-		created: Number,
-		updated: Number
-	},
-	{
-		collection: 'userInfo'
-	});
 //var cSchema = mongoose.Schema;
 //var ContSchema = new cSchema({
 //		email: String,

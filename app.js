@@ -19,8 +19,18 @@ mongoose.connection.on('error', function(){
   console.error('MongoDB Connection Error');
 });
 
+// check connection
+//var db = mongoose.connection;
+
+//db.on('error', console.error.bind(console, 'DB Error: '));
+//db.once('open', function(callback) {
+ // console.log('Connected to mongodb');
+//});
+
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var contacts = require('./routes/contact');
 
 var app = express();
 
@@ -53,6 +63,7 @@ app.use(passport.session());
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/contacts', contacts);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

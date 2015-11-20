@@ -8,11 +8,7 @@ var User = require('../models/user');
 /* GET about page */
 router.get('/about', function (req, res, next) {
     res.render('about', {
-<<<<<<< HEAD
-        title: 'About   ',
-=======
         title: 'About',
->>>>>>> origin/master
         displayName: req.user ? req.user.displayName : ''
     });
 });
@@ -31,7 +27,6 @@ router.get('/about', function (req, res, next) {
         });
     });
 /* GET contact page */
-<<<<<<< HEAD
     router.get('/contactme', function (req, res, next) {
         res.render('contactme', {
             title: 'contact Me',
@@ -39,14 +34,12 @@ router.get('/about', function (req, res, next) {
         });
     });
 
-=======
     router.get('/contact', function (req, res, next) {
         res.render('contact', {
             title: 'contact',
             displayName: req.user ? req.user.displayName : ''
         });
     });
->>>>>>> origin/master
 /* Render home page. */
 router.get('/', function (req, res, next) {
     res.render('index', {

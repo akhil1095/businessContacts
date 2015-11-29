@@ -3,8 +3,25 @@ var passport = require('passport');
 var router = express.Router();
 
 
+/* Utility function to check if user is authenticatd */
+function requireAuth(req, res, next){
+
+  // check if the user is logged in
+  if(!req.isAuthenticated()){
+    return res.redirect('/login');
+  }
+  next();
+}
+
 
 var User = require('../models/user');
+/* Render home page. */
+router.get('/', function (req, res, next) {
+    res.render('index', {
+        title: 'Home',
+        displayName: req.user ? req.user.displayName : ''
+    });
+});
 /* GET about page */
 router.get('/about', function (req, res, next) {
     res.render('about', {
@@ -40,13 +57,16 @@ router.get('/about', function (req, res, next) {
             displayName: req.user ? req.user.displayName : ''
         });
     });
-/* Render home page. */
-router.get('/', function (req, res, next) {
-    res.render('index', {
-        title: 'Home',
-        displayName: req.user ? req.user.displayName : ''
-    });
+    /* Render todoList page. */
+router.get('/todoList', requireAuth, function(req, res, next) {
+  res.render('todoList', { 
+      title: 'Todo List',
+      displayName: req.user ? req.user.displayName : '',
+      username: req.user ? req.user.username : '' 
+  });
 });
+
+
 
 /* Render Login page. */
 router.get('/login', function (req, res, next) {

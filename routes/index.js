@@ -40,12 +40,15 @@ router.get('/about', function (req, res, next) {
             displayName: req.user ? req.user.displayName : ''
         });
     });
+<<<<<<< HEAD
       router.get('/todoList', function (req, res, next) {
         res.render('todoList', {
             title: 'Todo List',
             displayName: req.user ? req.user.displayName : ''
         });
     });
+=======
+>>>>>>> parent of a4eac86... Added todo list
 /* Render home page. */
 router.get('/', function (req, res, next) {
     res.render('index', {

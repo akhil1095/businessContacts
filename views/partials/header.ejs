@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html>
   <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap-theme.min.css">
-  <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
   <!-- Custom CSS -->
   <link rel='stylesheet' href='/stylesheets/style.css' />
@@ -39,12 +43,11 @@
             <li>
               <% } %>
               <a href="/users">Users</a></li>
-            <li class="navbar-text">Hello,
-              <%= displayName %>
+            <li class="navbar-text">Hello, <%= displayName %>
             </li>
-          <li><a href="/contacts">Contacts</a></li>
-          
-          <li><a href="/todoList">Todo List</a></li>
+          <li><a href="/contact">Contacts</a></li>
+          <li class="navbar-text">Hello, <%= displayName %>
+            </li>
             <li><a href="/logout">Logout</a></li>
 
 
